@@ -1,0 +1,22 @@
+# docker-compose.yml
+# This file tells Docker: "please run PostgreSQL and Redis for me"
+
+version: '3.8'
+
+services:
+
+  postgres:
+    image: postgres:15          # Download PostgreSQL version 15
+    container_name: social_postgres
+    environment:
+      POSTGRES_DB: socialdb     # Create a database called "socialdb"
+      POSTGRES_USER: admin      # Username to log in
+      POSTGRES_PASSWORD: secret # Password to log in
+    ports:
+      - "5432:5432"             # Make it accessible at localhost:5432
+
+  redis:
+    image: redis:7              # Download Redis version 7
+    container_name: social_redis
+    ports:
+      - "6379:6379"             # Make it accessible at localhost:6379
